@@ -6,8 +6,8 @@ namespace Masaichi\Treasure\weather;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\InvalidArgumentException;
-use Masaichi\Treasure\weather\exceptions\Exception;
-use Masaichi\Treasure\weather\exceptions\HttpException;
+use Masaichi\Treasure\exceptions\Exception;
+use Masaichi\Treasure\exceptions\HttpException;
 
 class Weather
 {
