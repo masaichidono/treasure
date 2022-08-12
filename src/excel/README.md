@@ -23,7 +23,7 @@ $fieldName = [
     '编号' => 'id',
     '学号' => 'num',
 ];
-\Masaichi\Treasure\excel\PHPExcel::getExcelData($fileName, $fieldName);
+\Masaichi\Treasure\excel\MExcel::getExcelData($fileName, $fieldName);
 ```
 结果：
 ```json

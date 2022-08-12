@@ -9,7 +9,7 @@ use Box\Spout\Writer\WriterFactory;
 /**
  * Excel工具类.
  */
-class PHPExcel
+class MExcel
 {
     protected $type      = 'w';
     protected $fieldname = [];

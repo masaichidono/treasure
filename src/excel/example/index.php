@@ -1,6 +1,6 @@
 <?php
 //导出
-require_once "./../PHPExcel.php";
+require_once "./../MExcel.php";
 require_once "./../../../vendor/autoload.php";
 $fileName = './test.xlsx';
 $fieldName = ['id' => '编号', 'number' => '学号'];
@@ -16,4 +16,4 @@ $fieldName = [
     '编号' => 'id',
     '学号' => 'num',
 ];
-\Masaichi\Treasure\excel\PHPExcel::getExcelData($fileName, $fieldName);
+\Masaichi\Treasure\excel\MExcel::getExcelData($fileName, $fieldName);
