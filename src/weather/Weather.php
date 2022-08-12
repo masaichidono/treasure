@@ -40,6 +40,7 @@ class Weather
      * @param string $type
      * @param string $format
      * @return mixed|string
+     * @throws HttpException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getWeather(string $city, string $type = "base", string $format = "json")
@@ -68,7 +69,31 @@ class Weather
         } catch (Exception $e) {
             throw new HttpException($e->getMessage(), $e->getCode(), $e);
         }
+    }
 
+    /**
+     * 获取实时天气
+     * @param $city
+     * @param string $format
+     * @return mixed|string
+     * @throws HttpException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getLiveWeather($city, $format = "json")
+    {
+        return $this->getWeather($city, "base", $format);
+    }
 
+    /**
+     * 获取天气预报
+     * @param $city
+     * @param string $format
+     * @return mixed|string
+     * @throws HttpException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getForecastWeather($city, $format = "json")
+    {
+        return $this->getWeather($city, "all", $format);
     }
 }
