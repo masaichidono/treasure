@@ -1,11 +1,10 @@
 <?php
 
-namespace Masaichi\excel;
+namespace Masaichi\Treasure\excel;
 
 use Box\Spout\Common\Type;
 use Box\Spout\Reader\ReaderFactory;
 use Box\Spout\Writer\WriterFactory;
-use think\Exception;
 
 /**
  * Excel工具类.
@@ -226,6 +225,19 @@ class PHPExcel
         }
     }
 
+    private static function getReader($fileName, $fileType = 'XLSX')
+    {
+        if ('XLSX' == $fileType) {
+            $reader = ReaderFactory::create(Type::XLSX); // for XLSX files
+        } elseif ('CSV' == $fileType) {
+            $reader = ReaderFactory::create(Type::CSV); // for CSV files
+        } elseif ('ODS' == $fileType) {
+            $reader = ReaderFactory::create(Type::ODS); // for ODS files
+        }
+        $reader->open($fileName);
+        return $reader;
+    }
+
     /**
      * @author zhengfeng
      *
@@ -233,9 +245,13 @@ class PHPExcel
      *
      * @return bool
      */
-    public function getExcelData($indexData)
+    public static function getExcelData($fileName, $indexData, $fileType = 'XLSX')
     {
-        $rowIter = $this->getRowIterator();
+        $reader        = self::getReader($fileName, $fileType);
+        $sheetIterator = $reader->getSheetIterator();
+        $sheetIterator->rewind();
+        $sheet1  = $sheetIterator->current();
+        $rowIter = $sheet1->getRowIterator();
         try {
             $keyData    = [];  //格式为  1 => com   1：excel列  com ： 字段名
             $returnData = [];
@@ -259,9 +275,7 @@ class PHPExcel
                 }
                 $tmpData && $returnData[] = $tmpData;
             }
-        } catch (Exception $e) {
-            //记录日志
-
+        } catch (\Exception $e) {
             return false;
         }
 

@@ -9,3 +9,11 @@ $data = [
     ['id' => 2, 'number' => '456'],
 ];
 \Masaichi\excel\PHPExcel::exportData($data, $fieldName, $fileName);
+
+//获取excel内容，默认从第二行开始获取
+$fileName = './test.xlsx';
+$fieldName = [
+    '编号' => 'id',
+    '学号' => 'num',
+];
+\Masaichi\Treasure\excel\PHPExcel::getExcelData($fileName, $fieldName);
