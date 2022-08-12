@@ -10,11 +10,11 @@ trait Single
 
     /**
      * @param mixed ...$args
-     * @return null
+     * @return static
      */
     public static function getInstance(...$args)
     {
-        if (is_null(self::$instance)) {
+        if (is_null(static::$instance)) {
             static::$instance = new static(...$args);
         }
         return static::$instance;
