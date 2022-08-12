@@ -6,9 +6,12 @@ namespace Masaichi\Treasure\cache;
 //此类是缓存的service，提供统一的操作方法
 use http\Exception\InvalidArgumentException;
 use Masaichi\Treasure\cache\src\MRedis;
+use Masaichi\Treasure\common\traits\Single;
 
 class MCache
 {
+    use Single;
+
     protected $type        = 'redis'; //类型 redis  memcache
     protected $cacheClient = null; //缓存操作类
 
