@@ -4,9 +4,9 @@
 namespace Masaichi\Treasure\cache;
 
 //此类是缓存的service，提供统一的操作方法
-use http\Exception\InvalidArgumentException;
 use Masaichi\Treasure\cache\src\MRedis;
 use Masaichi\Treasure\common\traits\Single;
+use Masaichi\Treasure\exceptions\InvalidArgumentException;
 
 class MCache
 {
